@@ -16,6 +16,8 @@ export type Database = {
     Tables: {
       complaints: {
         Row: {
+          admin_response: string | null
+          categories: string[] | null
           category: string
           created_at: string
           description: string
@@ -32,6 +34,8 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          admin_response?: string | null
+          categories?: string[] | null
           category: string
           created_at?: string
           description: string
@@ -48,6 +52,8 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          admin_response?: string | null
+          categories?: string[] | null
           category?: string
           created_at?: string
           description?: string
@@ -65,6 +71,24 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -77,9 +101,16 @@ export type Database = {
           total: number
         }[]
       }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       submit_complaint: {
         Args: {
-          p_category: string
+          p_categories: string[]
           p_description: string
           p_email: string
           p_language: string
@@ -87,25 +118,24 @@ export type Database = {
           p_name: string
           p_role: string
           p_subcategory: string
-          p_title: string
         }
         Returns: string
       }
       track_complaint: {
         Args: { p_code: string }
         Returns: {
-          category: string
+          admin_response: string
+          categories: string[]
           created_at: string
           status: string
           subcategory: string
-          title: string
           tracking_code: string
           updated_at: string
         }[]
       }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -232,6 +262,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
