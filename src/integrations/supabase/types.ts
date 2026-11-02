@@ -14,13 +14,95 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      complaints: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          email: string | null
+          id: string
+          language: string
+          location: string | null
+          name: string | null
+          role: string
+          status: string
+          subcategory: string | null
+          title: string
+          tracking_code: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          email?: string | null
+          id?: string
+          language?: string
+          location?: string | null
+          name?: string | null
+          role?: string
+          status?: string
+          subcategory?: string | null
+          title: string
+          tracking_code?: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          email?: string | null
+          id?: string
+          language?: string
+          location?: string | null
+          name?: string | null
+          role?: string
+          status?: string
+          subcategory?: string | null
+          title?: string
+          tracking_code?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      complaint_stats: {
+        Args: never
+        Returns: {
+          category: string
+          total: number
+        }[]
+      }
+      submit_complaint: {
+        Args: {
+          p_category: string
+          p_description: string
+          p_email: string
+          p_language: string
+          p_location: string
+          p_name: string
+          p_role: string
+          p_subcategory: string
+          p_title: string
+        }
+        Returns: string
+      }
+      track_complaint: {
+        Args: { p_code: string }
+        Returns: {
+          category: string
+          created_at: string
+          status: string
+          subcategory: string
+          title: string
+          tracking_code: string
+          updated_at: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
