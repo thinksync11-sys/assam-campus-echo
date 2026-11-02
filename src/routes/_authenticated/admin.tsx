@@ -142,7 +142,7 @@ function Admin() {
             <form onSubmit={(e) => save(e, c.id)} className="mt-4 grid gap-3 border-t border-border pt-4 sm:grid-cols-[200px_1fr_auto]">
               <select name="status" defaultValue={c.status} className="field">
                 {STATUSES.map((s) => (
-                  <option key={s.id} value={c.status === s.id ? s.id : s.id} value-key={s.id}>
+                  <option key={s.id} value={s.id}>
                     {s.label}
                   </option>
                 ))}
