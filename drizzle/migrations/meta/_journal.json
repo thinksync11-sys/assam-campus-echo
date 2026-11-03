@@ -15,6 +15,13 @@
       "when": 1793641580832,
       "tag": "0001_multi_category_admin_roles",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793714693459,
+      "tag": "0002_add_complaint_photos",
+      "breakpoints": true
     }
   ]
 }

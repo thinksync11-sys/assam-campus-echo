@@ -26,6 +26,7 @@ export type Database = {
           language: string
           location: string | null
           name: string | null
+          photo_url: string | null
           role: string
           status: string
           subcategory: string | null
@@ -44,6 +45,7 @@ export type Database = {
           language?: string
           location?: string | null
           name?: string | null
+          photo_url?: string | null
           role?: string
           status?: string
           subcategory?: string | null
@@ -62,6 +64,7 @@ export type Database = {
           language?: string
           location?: string | null
           name?: string | null
+          photo_url?: string | null
           role?: string
           status?: string
           subcategory?: string | null
@@ -116,6 +119,7 @@ export type Database = {
           p_language: string
           p_location: string
           p_name: string
+          p_photo_url?: string
           p_role: string
           p_subcategory: string
         }
@@ -127,6 +131,7 @@ export type Database = {
           admin_response: string
           categories: string[]
           created_at: string
+          photo_url: string
           status: string
           subcategory: string
           tracking_code: string
