@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { ComplaintPhoto } from "@/components/ComplaintPhoto";
 import { CATEGORIES } from "@/lib/i18n";
 
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -29,6 +30,7 @@ type Complaint = {
   location: string | null;
   status: string;
   admin_response: string | null;
+  photo_url: string | null;
   created_at: string;
 };
 
@@ -59,7 +61,7 @@ function Admin() {
       if (ok) {
         const { data } = await supabase
           .from("complaints")
-          .select("id, tracking_code, name, email, role, categories, subcategory, description, location, status, admin_response, created_at")
+          .select("id, tracking_code, name, email, role, categories, subcategory, description, location, status, admin_response, photo_url, created_at")
           .order("created_at", { ascending: false });
         setRows((data as Complaint[] | null) ?? []);
       }
@@ -135,6 +137,7 @@ function Admin() {
               {c.location ? ` · ${c.location}` : ""}
             </p>
             <p className="mt-3 text-sm">{c.description}</p>
+            {c.photo_url && <ComplaintPhoto path={c.photo_url} className="mt-3 max-h-64 rounded-xl border border-border object-cover" />}
             <p className="mt-3 text-xs text-muted-foreground">
               {c.name ?? "Anonymous"} · {c.role}
               {c.email ? ` · ${c.email}` : ""}
