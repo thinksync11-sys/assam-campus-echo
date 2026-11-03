@@ -53,15 +53,28 @@ function Index() {
       setErr(lang === "en" ? "Please pick at least one category." : "অনুগ্ৰহ কৰি অন্ততঃ এটা শ্ৰেণী বাছক।");
       return;
     }
+    let photoPath: string | null = null;
+    if (photo) {
+      const ext = (photo.name.split(".").pop() || "jpg").toLowerCase();
+      photoPath = `${crypto.randomUUID()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("complaint-photos").upload(photoPath, photo);
+      if (upErr) {
+        setSending(false);
+        setErr(lang === "en" ? "Could not upload the photo. Please try a smaller image." : "ফটো আপল'ড কৰিব পৰা নগ'ল। সৰু ছবি চেষ্টা কৰক।");
+        return;
+      }
+    }
     const { data, error } = await supabase.rpc("submit_complaint", {
       p_name: String(f.get("name") || ""), p_email: String(f.get("email") || ""),
       p_role: String(f.get("role")), p_categories: cats, p_subcategory: String(f.get("sub")),
       p_description: String(f.get("desc")),
       p_location: String(f.get("location") || ""), p_language: lang,
+      p_photo_url: photoPath,
     });
     setSending(false);
     if (error) { setErr(lang === "en" ? "Please add your name and a description (10+ chars)." : "আপোনাৰ নাম আৰু বৰ্ণনা (১০+ আখৰ) দিয়ক।"); return; }
     setCode(data as string);
+    setPhoto(null);
     (e.target as HTMLFormElement).reset();
     loadStats();
   }
@@ -164,6 +177,16 @@ function Index() {
             </label>
             <textarea name="desc" required minLength={10} maxLength={5000} rows={5} placeholder={t.desc} className="field sm:col-span-2" />
             <input name="location" maxLength={200} placeholder={t.location} className="field sm:col-span-2" />
+            <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-border px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary sm:col-span-2">
+              <span className="text-xl">📷</span>
+              <span>{photo ? `${photo.name} — ${t.photoAttached}` : t.photo}</span>
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                className="hidden"
+                onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
+              />
+            </label>
             <button disabled={sending} className="rounded-full bg-gradient-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02] disabled:opacity-60 sm:col-span-2">
               {sending ? t.sending : t.submit}
             </button>
@@ -190,6 +213,7 @@ function Index() {
             <p className="font-mono text-sm text-primary-glow">#{found.tracking_code}</p>
             <h3 className="mt-1 text-xl font-semibold">{found.categories?.map(catLabel).join(" · ")}</h3>
             <p className="text-sm italic text-muted-foreground">{found.subcategory}</p>
+            {found.photo_url && <ComplaintPhoto path={found.photo_url} className="mt-4 max-h-64 w-full rounded-xl border border-border object-cover" />}
             <div className="mt-6 grid grid-cols-4 gap-2">
               {steps.map((s, i) => {
                 const active = steps.indexOf(found.status) >= i;
