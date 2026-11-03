@@ -1,12 +1,7 @@
 # Assam Campus Echo
 
-develop a full stack grievance and campus issue management platform that allows students, employees and other university stakeholders to report and track campus related problems in Assamese or English.
 
 Think Sync — Existing Website Modifications
-
-
-
-**Important:** The website has already been developed. Do not rebuild it, create a new project, or change its existing core functionality. Only modify and improve the existing website according to the following requirements.
 
 
 
@@ -28,11 +23,7 @@ Think Sync — Existing Website Modifications
 
 
 
-### 2. Complaint Categorization
-
-
-
-Organize the existing complaint/reporting system into these **6 categories**. Users must be able to select the appropriate category when submitting a complaint.
+### 2. Complaint Categorization:
 
 
 
@@ -76,7 +67,7 @@ Organize the existing complaint/reporting system into these **6 categories**. Us
 
 
 
-**6. Language Barriers for International Students**
+**6. Language Barriers for Students**
 
 - Difficulty communicating due to language differences.
 
@@ -84,9 +75,11 @@ Organize the existing complaint/reporting system into these **6 categories**. Us
 
 one category for other suggestions 
 
-### 3. Development Team Information
+### 3. Development Team Information:
 
-Display the following team information wherever appropriate, such as the About Us or Contact section:
+
+
+
 
 
 
