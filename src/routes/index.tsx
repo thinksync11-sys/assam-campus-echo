@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { CATEGORIES, T, type Lang } from "@/lib/i18n";
-import { CustomCursor } from "@/components/CustomCursor";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,7 +74,6 @@ function Index() {
 
   return (
     <div className="min-h-screen overflow-x-hidden" style={lang === "as" ? { fontFamily: "'Noto Sans Bengali', var(--font-sans)" } : undefined}>
-      <CustomCursor />
 
       <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
