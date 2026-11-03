@@ -1,14 +1,110 @@
-# Welcome to your Lovable project
+# Assam Campus Echo
+
+develop a full stack grievance and campus issue management platform that allows students, employees and other university stakeholders to report and track campus related problems in Assamese or English.
+
+Think Sync — Existing Website Modifications
+
+
+
+**Important:** The website has already been developed. Do not rebuild it, create a new project, or change its existing core functionality. Only modify and improve the existing website according to the following requirements.
+
+
+
+### 1. UI/UX Design Updates
+
+- Apply a consistent **purple and black** theme throughout the website.
+
+- Maintain a modern, premium, clean, and user-friendly interface.
+
+- Add smooth animations and transitions wherever appropriate.
+
+- Use *italic typography* and underlined text wherever visually suitable.
+
+- Replace the default cursor with a unique, custom-designed cursor.
+
+- Ensure the website remains fully responsive across desktop, tablet, and mobile devices.
+
+- Preserve the existing website structure, features, and functionality unless a change is specifically required.
+
+
+
+### 2. Complaint Categorization
+
+
+
+Organize the existing complaint/reporting system into these **6 categories**. Users must be able to select the appropriate category when submitting a complaint.
+
+
+
+**1. Roads & Transportation**
+
+- Damaged roads and potholes.
+
+- Excessive dust on campus roads.
+
+
+
+**2. Cleanliness & Waste Management**
+
+- Insufficient dustbins.
+
+- Irregular garbage collection or cleaning.
+
+
+
+**3. Landscaping & Campus Maintenance**
+
+- Excessively tall grass.
+
+- Poorly maintained gardens and campus surroundings.
+
+
+
+**4. Buildings & Infrastructure**
+
+- Damaged or poorly maintained classrooms.
+
+- Issues with campus buildings and facilities.
+
+
+
+**5. Laboratories & Academic Resources**
+
+- Lack of laboratory materials and components.
+
+- Insufficient or damaged academic equipment.
+
+
+
+**6. Language Barriers for International Students**
+
+- Difficulty communicating due to language differences.
+
+- Lack of multilingual assistance and information.
+
+one category for other suggestions 
+
+### 3. Development Team Information
+
+Display the following team information wherever appropriate, such as the About Us or Contact section:
+
+
+
+- **Team Name:** Think Sync
+
+- **Email:** thinksync11@gmail.com
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://assam-campus-echo.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/426c9d8e-3345-4399-b73b-550df2fb219d).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +116,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
