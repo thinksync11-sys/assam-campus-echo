@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { ComplaintPhoto } from "@/components/ComplaintPhoto";
 import { CATEGORIES, T, type Lang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type Tracked = { tracking_code: string; categories: string[] | null; subcategory: string | null; status: string; admin_response: string | null; created_at: string; updated_at: string };
+type Tracked = { tracking_code: string; categories: string[] | null; subcategory: string | null; status: string; admin_response: string | null; photo_url: string | null; created_at: string; updated_at: string };
 
 function Index() {
   const [lang, setLang] = useState<Lang>("en");
@@ -28,6 +29,7 @@ function Index() {
   const [code, setCode] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [q, setQ] = useState("");
+  const [photo, setPhoto] = useState<File | null>(null);
   const [found, setFound] = useState<Tracked | null | undefined>(undefined);
 
   const loadStats = async () => {
