@@ -69,7 +69,7 @@ function Index() {
       p_role: String(f.get("role")), p_categories: cats, p_subcategory: String(f.get("sub")),
       p_description: String(f.get("desc")),
       p_location: String(f.get("location") || ""), p_language: lang,
-      p_photo_url: photoPath ?? undefined,
+      ...(photoPath ? { p_photo_url: photoPath } : {}),
     });
     setSending(false);
     if (error) { setErr(lang === "en" ? "Please add your name and a description (10+ chars)." : "আপোনাৰ নাম আৰু বৰ্ণনা (১০+ আখৰ) দিয়ক।"); return; }
